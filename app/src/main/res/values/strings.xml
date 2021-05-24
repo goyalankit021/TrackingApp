@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HappyCustomer1</string>
+    <string name="logo_name">FitiFii</string>
+    <string name="slogan_name">Dont stop till you drop!</string>
+    <string name="home_name">HOME</string>
+    <string name="profile_name">PROFILE</string>
+    <string name="open">OPEN</string>
+    <string name="close">CLOSE</string>
+    <string name="heading">Health Is Wealth</string>
+    <string name="login">LOGIN</string>
+    <string name="signup">SIGN UP</string>
+    <string name="login_slogan">We Will Help You To Achieve Best Version Of Yourself</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="create_account">CREATE ACCOUNT</string>
+    <string name="enter_full_name">Full Name</string>
+    <string name="enter_email">Full Email</string>
+    <string name="enter_phone">Phone Number</string>
+    <string name="next_btn">NEXT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
