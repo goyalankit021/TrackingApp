@@ -2,11 +2,16 @@ package com.example.happycustomer1;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.android.material.textfield.TextInputLayout;
+import com.hbb20.CountryCodePicker;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +28,11 @@ public class ProfileSignUpNext2Fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //Custom Variables
+    CountryCodePicker country_code_picker;
+    TextInputLayout signup_phone_number;
+    Button signup_login_button,signup_next_button;
 
     public ProfileSignUpNext2Fragment() {
         // Required empty public constructor
@@ -59,6 +69,62 @@ public class ProfileSignUpNext2Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_sign_up_next2, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile_sign_up_next2, container, false);
+
+        //Hooks
+        country_code_picker=(CountryCodePicker)view.findViewById(R.id.country_code_picker);
+        signup_phone_number=(TextInputLayout)view.findViewById(R.id.signup_phone_number);
+        signup_login_button=(Button)view.findViewById(R.id.signup_login_button);
+        signup_next_button=(Button)view.findViewById(R.id.signup_next_button);
+
+        //Data From Previous Fragment
+        Bundle bundle=this.getArguments();
+
+        signup_next_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!validatePhoneNumber()){
+                    return;
+                }
+
+                //Getting values of fields
+                String _getUserEnteredPhoneNumber=signup_phone_number.getEditText().getText().toString().trim();
+                String _phoneNo="+"+country_code_picker.getFullNumber()+_getUserEnteredPhoneNumber;
+
+                //Making bundle to send data to next fragment
+                bundle.putString("phoneNo",_phoneNo);
+
+                ProfileSignUpOTPFragment fragment2= new ProfileSignUpOTPFragment();
+                fragment2.setArguments(bundle);
+
+                AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, fragment2).commit();
+
+            }
+        });
+
+        return view;
     }
+
+    private boolean validatePhoneNumber() {
+        String val = signup_phone_number.getEditText().getText().toString().trim();
+        String checkspaces = "\\A\\w{1,20}\\z";
+        if (val.isEmpty()) {
+            signup_phone_number.setError("Enter valid phone number");
+            return false;
+        } else if (!val.matches(checkspaces)) {
+            signup_phone_number.setError("No White spaces are allowed!");
+            return false;
+        }
+        else if (val.length()<10) {
+            signup_phone_number.setError("Enter valid phone number");
+            return false;
+        }
+        else {
+            signup_phone_number.setError(null);
+            signup_phone_number.setErrorEnabled(false);
+            return true;
+        }
+    }
+
 }

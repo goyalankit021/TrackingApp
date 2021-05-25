@@ -24,6 +24,11 @@
                 android:id="@+id/profile1"
                 android:title="@string/profile_name"
                 android:icon="@drawable/dumbell"/>
+
+                <item
+                    android:id="@+id/track_me"
+                    android:title="TRACK ME"
+                    android:icon="@drawable/dumbell"/>
             </group>
         </menu>
     </item>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HappyCustomer1</string>
+    <string name="app_name">HappyCustomer!</string>
     <string name="logo_name">FitiFii</string>
     <string name="slogan_name">Dont stop till you drop!</string>
     <string name="home_name">HOME</string>
@@ -22,4 +22,24 @@
     <string name="next_btn">NEXT</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="otp_code_text">Code</string>
+    <string name="otp_verification_text">Verification</string>
+    <string name="otp_description_text">Enter one time password sent on\n+918099909090</string>
+    <string name="verify_code">VERIFY</string>
+
+
+    <string name="forget_password_1">FORGET PASSWORD</string>
+    <string name="forget_password_details">Provide your account email for which you want to reset your password.</string>
+
+    <string name="make_selection">MAKE \nSELECTION</string>
+    <string name="make_selection_detail">Select which contact detail should we use to reset your password?</string>
+    <string name="via_sms">via sms</string>
+    <string name="via_mail">via mail</string>
+
+    <string name="new_credentials">New \nPassword</string>
+    <string name="new_credentials_detail">Confirm \nNew Password</string>
+
+    <string name="password_updated">PASSWORD \nUPDATED</string>
+    <string name="password_updated_success_message">your password has been updated</string>
 </resources>

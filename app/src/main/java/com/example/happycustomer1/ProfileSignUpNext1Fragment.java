@@ -9,6 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +27,11 @@ public class ProfileSignUpNext1Fragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    //User Defined Variables
+    RadioGroup radio_group;
+    RadioButton selectedAge;
+    DatePicker age_picker;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -60,16 +71,52 @@ public class ProfileSignUpNext1Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile_sign_up_next1, container, false);
+        View view1 = inflater.inflate(R.layout.fragment_profile_sign_up_next1, container, false);
         // here you have the reference of your button
-        Button nextButton = (Button)view.findViewById(R.id.signup_next_button);
-        Button loginButton = (Button)view.findViewById(R.id.signup_login_button);
+        Button nextButton = (Button)view1.findViewById(R.id.signup_next_button);
+        Button loginButton = (Button)view1.findViewById(R.id.signup_login_button);
+
+
+        //XML File hooks
+        radio_group=(RadioGroup)view1.findViewById(R.id.radio_group);
+        age_picker=(DatePicker)view1.findViewById(R.id.age_picker);
+
+
+        //Data From Previous Fragment
+        Bundle bundle=this.getArguments();
+        /*
+        String signup_fullname=bundle.getString("signup_fullname");
+        String signup_email=bundle.getString("signup_email");
+        String signup_username=bundle.getString("signup_username");
+        String signup_password=bundle.getString("signup_password");*/
+
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!validateGender()){
+                    return;
+                }
+
+                //Stroing data
+                selectedAge=view1.findViewById(radio_group.getCheckedRadioButtonId());
+                String _gender=selectedAge.getText().toString();
+                int day=age_picker.getDayOfMonth();
+                int month=age_picker.getMonth();
+                int year=age_picker.getYear();
+                String date=day+"/"+month+"/"+year;
+
+                //Making bundle to send data to next fragment
+                bundle.putString("gender",_gender);
+                bundle.putString("date",date);
+
+                ProfileSignUpNext2Fragment fragment2= new ProfileSignUpNext2Fragment();
+                fragment2.setArguments(bundle);
+
+
                 AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
-                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileLoginFragment()).commit();
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, fragment2).commit();
             }
         });
 
@@ -81,6 +128,20 @@ public class ProfileSignUpNext1Fragment extends Fragment {
             }
         });
 
-        return view;
+
+
+
+
+
+        return view1;
+    }
+
+    private boolean validateGender() {
+        if (radio_group.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(getContext(), "Please Select Gender", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
     }
 }

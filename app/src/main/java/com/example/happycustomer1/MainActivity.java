@@ -80,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
                         temp=new ProfileFragment();
                         break;
 
+                    case R.id.track_me:
+                        temp=new TrackMeFragment();
+                        break;
                 }
                 if(!home)
                     getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,temp).addToBackStack(null).commit();
