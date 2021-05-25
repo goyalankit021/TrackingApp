@@ -8,9 +8,22 @@
     tools:context=".TrackMeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+<!--    <AutoCompleteTextView-->
+<!--        android:id="@+id/destination"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:hint="Enter destination" />-->
+<!--    <EditText-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:hint="Enter destination"-->
+<!--        android:id="@+id/destination"/>-->
+
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity_main);
+        getPermissions();
 
         //To Remove status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -95,6 +100,30 @@ public class MainActivity extends AppCompatActivity {
         animateNavigationDrawer();
     }
 
+    private void getPermissions() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},1);
+            return;
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if ((permissions[0].equals(Manifest.permission.ACCESS_FINE_LOCATION)
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    && (permissions[1].equals(Manifest.permission.ACCESS_COARSE_LOCATION)
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED)) {
+                return;
+            }
+            else{
+                this.finishAffinity();
+            }
+        }
+    }
+
     private void animateNavigationDrawer() {
         drawerLayout.setScrimColor(getResources().getColor(R.color.colorPrimary));
         drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
@@ -154,5 +183,7 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+
 
 }
