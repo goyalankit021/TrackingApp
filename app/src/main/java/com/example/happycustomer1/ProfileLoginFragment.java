@@ -16,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -35,6 +41,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.hbb20.CountryCodePicker;
 
 import org.jetbrains.annotations.NotNull;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,7 +64,7 @@ public class ProfileLoginFragment extends Fragment {
     Button login_button, create_account_button, forget_password_button;
     ImageView login_back_button;
     CountryCodePicker login_country_code_picker;
-    TextInputLayout login_phone_number, login_password;
+    TextInputLayout login_phone_number, login_password, login_email;
     RelativeLayout progressBar;
 
     //Varibles
@@ -103,7 +111,7 @@ public class ProfileLoginFragment extends Fragment {
         //Changing color of toolbar
         //To change color and heading on toolbar
         toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
-        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle = (TextView) toolbarTop.findViewById(R.id.toolbar_title);
         mTitle.setText("profile");
 
         //To change color
@@ -112,12 +120,15 @@ public class ProfileLoginFragment extends Fragment {
         //Hooks
         login_button = (Button) view1.findViewById(R.id.login_button);
         forget_password_button = (Button) view1.findViewById(R.id.forget_password_button);
-        login_country_code_picker = (CountryCodePicker) view1.findViewById(R.id.login_country_code_picker);
-        login_phone_number = (TextInputLayout) view1.findViewById(R.id.login_phone_number);
+
+        //login_country_code_picker = (CountryCodePicker) view1.findViewById(R.id.login_country_code_picker);
+        //login_phone_number = (TextInputLayout) view1.findViewById(R.id.login_phone_number);
+
+        login_email = (TextInputLayout) view1.findViewById(R.id.login_email);
         login_password = (TextInputLayout) view1.findViewById(R.id.login_password);
         progressBar = (RelativeLayout) view1.findViewById(R.id.progressBar);
         create_account_button = (Button) view1.findViewById(R.id.create_account_button);
-        login_back_button=(ImageView) view1.findViewById(R.id.login_back_button);
+        login_back_button = (ImageView) view1.findViewById(R.id.login_back_button);
 
 
         //Click on back button replace with previous fragment
@@ -138,6 +149,7 @@ public class ProfileLoginFragment extends Fragment {
             }
         });
 
+        /*
         //Click on login button
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -216,12 +228,69 @@ public class ProfileLoginFragment extends Fragment {
             }
         });
 
+*/
+
+        //New login button
+        login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isConnected(getContext())) {
+                    showCustomDialog(view);
+                }
+
+                if (!validateEmail()) {
+                    return;
+                }
+
+                progressBar.setVisibility(View.VISIBLE);
+                //get data
+                //String _phoneNumber = login_phone_number.getEditText().getText().toString().trim();
+                String _email = login_email.getEditText().getText().toString().trim();
+                String _password = login_password.getEditText().getText().toString().trim();
+
+                FirebaseAuth mAuth;
+                mAuth = FirebaseAuth.getInstance();
+
+                mAuth.signInWithEmailAndPassword(_email,_password)
+                        .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Log.d(TAG, "signInWithEmail:success");
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+                                    appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new UserProfileAfterLoginFragment()).commit();
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                    Toast.makeText(getContext(), "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+                        });
+
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+
 
         forget_password_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
-                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ForgetPasswordFragment()).commit();
+//                AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+//                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ForgetPasswordFragment()).commit();
+                if (!isConnected(getContext())) {
+                    showCustomDialog(view);
+                }
+
+                if (!validateEmail()) {
+                    return;
+                }
+                String _email = login_email.getEditText().getText().toString().trim();
+                FirebaseAuth.getInstance().sendPasswordResetEmail(_email);
+                Toast.makeText(getContext(),"Reset password link has been sent to registered email",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -259,7 +328,7 @@ public class ProfileLoginFragment extends Fragment {
             return false;
         }
     }
-
+/*
     private boolean validateFields() {
         String _phoneNumber = login_phone_number.getEditText().getText().toString().trim();
         String _password = login_password.getEditText().getText().toString().trim();
@@ -276,6 +345,28 @@ public class ProfileLoginFragment extends Fragment {
             login_phone_number.setError(null);
             login_phone_number.setErrorEnabled(false);
 
+            login_password.setError(null);
+            login_password.setErrorEnabled(false);
+            return true;
+        }
+    }
+*/
+
+    public boolean validateEmail() {
+        String _email = login_email.getEditText().getText().toString().trim();
+        String _password = login_password.getEditText().getText().toString().trim();
+        if (_email.isEmpty()) {
+            login_email.setError("Phone number can not be empty");
+            login_email.requestFocus();
+            return false;
+        }
+        else if (_password.isEmpty()) {
+            login_password.setError("Password can not be empty");
+            login_password.requestFocus();
+            return false;
+        } else {
+            login_email.setError(null);
+            login_email.setErrorEnabled(false);
             login_password.setError(null);
             login_password.setErrorEnabled(false);
             return true;
