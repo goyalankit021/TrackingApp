@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -63,6 +64,7 @@ public class ProfileSignUpOTPFragment extends Fragment {
     //Varibles
     androidx.appcompat.widget.Toolbar toolbarTop;
     TextView mTitle;
+    View view56;
 
     //Data of user
     String signup_fullname,signup_username,signup_email,signup_password,gender,date,phoneNo,whatToDO;
@@ -103,6 +105,7 @@ public class ProfileSignUpOTPFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view1 = inflater.inflate(R.layout.fragment_profile_sign_up_o_t_p, container, false);
+        view56=inflater.inflate(R.layout.fragment_profile_sign_up_o_t_p, container, false);
 
         //Hooks
         pin_view=(PinView)view1.findViewById(R.id.pin_view);
@@ -220,7 +223,7 @@ public class ProfileSignUpOTPFragment extends Fragment {
 
         //Migh give errror because of (Executor) https://www.youtube.com/watch?v=u0ZpjFZCXus
         firebaseAuth.signInWithCredential(credential)
-                .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener((Executor) getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {

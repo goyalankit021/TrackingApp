@@ -159,7 +159,7 @@ public class ProfileLoginFragment extends Fragment {
                 if (_phoneNumber.charAt(0) == '0') {
                     _phoneNumber = _phoneNumber.substring(1);
                 }
-                String _completePhoneNumber = "+" + login_country_code_picker.getFullNumber() + _phoneNumber;
+                String _completePhoneNumber = "+" + login_country_code_picker.getSelectedCountryCode() + _phoneNumber;
 
                 //Database Query may be error because of this word phoneNo
                 Query checkUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("phoneNo").equalTo(_completePhoneNumber);
