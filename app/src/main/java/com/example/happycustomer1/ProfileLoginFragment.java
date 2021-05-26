@@ -287,8 +287,9 @@ public class ProfileLoginFragment extends Fragment {
                     showCustomDialog(view);
                 }
 
-                if (!validateEmail()) {
-                    return;
+                if (login_email.getEditText().getText().toString().length() < 1 ) {
+                    login_email.setError("Email can not be empty");
+                    login_email.requestFocus();
                 }
                 String _email = login_email.getEditText().getText().toString().trim();
                 FirebaseAuth.getInstance().sendPasswordResetEmail(_email);
@@ -358,7 +359,7 @@ public class ProfileLoginFragment extends Fragment {
         String _email = login_email.getEditText().getText().toString().trim();
         String _password = login_password.getEditText().getText().toString().trim();
         if (_email.isEmpty()) {
-            login_email.setError("Phone number can not be empty");
+            login_email.setError("Email can not be empty");
             login_email.requestFocus();
             return false;
         }
