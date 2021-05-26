@@ -254,6 +254,12 @@ public class ProfileLoginFragment extends Fragment {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "signInWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
+                                    if(!user.isEmailVerified()){
+
+                                        Toast.makeText(getContext(),"Email Address not verified",Toast.LENGTH_SHORT);
+                                        FirebaseAuth.getInstance().signOut();
+                                        return;
+                                    }
                                     AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
                                     appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new UserProfileAfterLoginFragment()).commit();
                                 } else {
@@ -261,9 +267,9 @@ public class ProfileLoginFragment extends Fragment {
                                     Log.w(TAG, "signInWithEmail:failure", task.getException());
                                     Toast.makeText(getContext(), "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
-
                                 }
                             }
+
                         });
 
                 progressBar.setVisibility(View.GONE);

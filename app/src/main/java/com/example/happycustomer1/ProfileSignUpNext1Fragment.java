@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -19,10 +20,16 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -148,7 +155,19 @@ public class ProfileSignUpNext1Fragment extends Fragment {
                 bundle.putString("date",date);
 
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(bundle.getString("signup_email"),
-                        bundle.getString("signup_password"));
+                        bundle.getString("signup_password")).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            user.sendEmailVerification();
+                            FirebaseAuth.getInstance().signOut();
+                        } else {
+                            // User is signed out
+
+                        }
+                    }
+                });
                 String signup_fullname=bundle.getString("signup_fullname");
                 String signup_username=bundle.getString("signup_username");
                 String signup_email=bundle.getString("signup_email");
