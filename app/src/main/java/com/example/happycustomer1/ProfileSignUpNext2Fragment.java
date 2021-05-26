@@ -93,6 +93,7 @@ public class ProfileSignUpNext2Fragment extends Fragment {
 
                 //Making bundle to send data to next fragment
                 bundle.putString("phoneNo",_phoneNo);
+                bundle.putString("whatToDO","createNewUser");
 
                 ProfileSignUpOTPFragment fragment2= new ProfileSignUpOTPFragment();
                 fragment2.setArguments(bundle);

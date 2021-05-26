@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?android:attr/actionBarSize"
+    tools:context=".ConstantFragments.HomeAbsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/abs_constant"/>
+
+                <TextView
+                    android:id="@+id/fix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/bungee"
+                    android:gravity="center"
+                    android:text="Abs Workout"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/heading1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fix"
+                    android:fontFamily="@font/bungee"
+                    android:text="Star Plank"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading1"
+                    android:fontFamily="sans-serif"
+                    android:text="Get into line with the pushup. Shift your arms and feet as far apart as you can and your body can create a star
+formation. Keep your torso straight and abs brace for few seconds."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content1"
+                    android:fontFamily="@font/bungee"
+                    android:text="Side Plank"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading2"
+                    android:fontFamily="sans-serif"
+                    android:text="Lie on your left side, resting on the floor with your left forearm for support. Raise your hips so that you form a straight
+line in your body and brace your abs. Your weight is supposed to be on your left forearm and your left foot's tip. Keep
+the position with braced abs."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content2"
+                    android:fontFamily="@font/bungee"
+                    android:text="Dead Bug"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading3"
+                    android:fontFamily="sans-serif"
+                    android:text="With your arms straight above your shoulders, lay face up on the floor. Bring your knees directly over your hips to
+begin with and bend at the knee so your calf forms a straight angle to your thigh. Next when straightening your right
+leg and sending it into the floor, lower your left arm over your head concurrently. Back to the starting point, pause,
+and then repeat."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content3"
+                    android:fontFamily="@font/bungee"
+                    android:text="Hollow extension-to-cannonball"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading4"
+                    android:fontFamily="sans-serif"
+                    android:text="Get on your back in a cannonball-like shape, hugging your knees into your stomach. Extend your legs and arms
+outward into a hollow stance at the same time pushing your lower back to the concrete. Until curling up again, hold
+for five seconds."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

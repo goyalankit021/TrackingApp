@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -54,7 +55,7 @@ public class ProfileSignUpOTPFragment extends Fragment {
     TextView otp_description_text;
 
     //Data of user
-    String signup_fullname,signup_username,signup_email,signup_password,gender,date,phoneNo;
+    String signup_fullname,signup_username,signup_email,signup_password,gender,date,phoneNo,whatToDO;
 
     public ProfileSignUpOTPFragment() {
         // Required empty public constructor
@@ -111,6 +112,8 @@ public class ProfileSignUpOTPFragment extends Fragment {
         gender=bundle.getString("gender");
         date=bundle.getString("date");
         phoneNo=bundle.getString("phoneNo");
+        whatToDO=bundle.getString("whatToDO");
+
 
 
         //Set data in Text view, might give eroor
@@ -186,12 +189,12 @@ public class ProfileSignUpOTPFragment extends Fragment {
                         if (task.isSuccessful()) {
                             //Verification completed successfully here Either
                             // store the data or do whatever desire
-                            /*
+
                             if (whatToDO.equals("updateData")) {
                                 updateOldUsersData();
                             } else if (whatToDO.equals("createNewUser")) {
                                 storeNewUserData();
-                            }*/
+                            }
                         } else {
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                                 Toast.makeText(getContext(), "Verification Not Completed! Try again.", Toast.LENGTH_SHORT).show();
@@ -199,6 +202,20 @@ public class ProfileSignUpOTPFragment extends Fragment {
                         }
                     }
                 });
+    }
+
+    private void updateOldUsersData() {
+        Bundle bundle=new Bundle();
+        bundle.putString("phoneNo",phoneNo);
+
+        SetNewPasswordFragment fragment= new SetNewPasswordFragment();
+        fragment.setArguments(bundle);
+
+        //getView() might create error
+        AppCompatActivity appCompatActivity = (AppCompatActivity) getView().getContext();
+        appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, fragment).commit();
+
+        //Finish this activity here like add back to stack
     }
 
     private void storeNewUserData() {
@@ -210,7 +227,7 @@ public class ProfileSignUpOTPFragment extends Fragment {
         reference.child(phoneNo).setValue(addNewUser);
 
         //We will also create a Session here in next videos to keep the user logged In
-/*
+/*Have to do code here by myseld
         startActivity(new Intent(getApplicationContext(), RetailerDashboard.class));
         finish();*/
     }

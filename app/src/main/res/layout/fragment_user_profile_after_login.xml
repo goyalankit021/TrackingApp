@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="?android:attr/actionBarSize"
-    tools:context=".GymWorkoutFragment">
+    tools:context=".UserProfileAfterLoginFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/temp"
         android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

@@ -20,6 +20,18 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import com.example.happycustomer1.ConstantFragments.CoachDetailsFragment;
+import com.example.happycustomer1.ConstantFragments.FirstAidFragment;
+import com.example.happycustomer1.ConstantFragments.GymAbsFragment;
+import com.example.happycustomer1.ConstantFragments.GymBicepsAndBackFragment;
+import com.example.happycustomer1.ConstantFragments.GymChestAndTricepsFragment;
+import com.example.happycustomer1.ConstantFragments.GymLegsFragment;
+import com.example.happycustomer1.ConstantFragments.GymShouldersFragment;
+import com.example.happycustomer1.ConstantFragments.HomeAbsFragment;
+import com.example.happycustomer1.ConstantFragments.HomeBicepsAndBackFragment;
+import com.example.happycustomer1.ConstantFragments.HomeChestAndTricepsFragment;
+import com.example.happycustomer1.ConstantFragments.HomeLegsFragment;
+import com.example.happycustomer1.ConstantFragments.HomeShouldersFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -72,22 +84,57 @@ public class MainActivity extends AppCompatActivity {
                         home=true;
                         break;
 
-                    case R.id.profile:
-                        temp=new CoachProfileFragment();
+                    case R.id.First_Aid_Techniques:
+                        temp=new FirstAidFragment();
                         break;
 
-                    case R.id.home1:
-                        temp=new GymWorkoutFragment();
+                    case R.id.Coach_Details:
+                        temp=new CoachDetailsFragment();
                         break;
 
+                    case R.id.Trace_Me:
+                        temp=new TrackMeFragment();
+                        break;
 
-                    case R.id.profile1:
+                    case R.id.Profile:
                         temp=new ProfileFragment();
                         break;
 
-                    case R.id.track_me:
-                        temp=new TrackMeFragment();
+
+                    case R.id.Biceps_and_Back:
+                        temp=new GymBicepsAndBackFragment();
                         break;
+
+                    case R.id.Chest_and_Triceps:
+                        temp=new GymChestAndTricepsFragment();
+                        break;
+                    case R.id.Shoulders:
+                        temp=new GymShouldersFragment();
+                        break;
+                    case R.id.Abs:
+                        temp=new GymAbsFragment();
+                        break;
+                    case R.id.Legs:
+                        temp=new GymLegsFragment();
+                        break;
+                    case R.id.Biceps_and_Back_h:
+                        temp=new HomeBicepsAndBackFragment();
+                        break;
+
+                    case R.id.Chest_and_Triceps_h:
+                        temp=new HomeChestAndTricepsFragment();
+                        break;
+                    case R.id.Shoulders_h:
+                        temp=new HomeShouldersFragment();
+                        break;
+                    case R.id.Abs_h:
+                        temp=new HomeAbsFragment();
+                        break;
+                    case R.id.Legs_h:
+                        temp=new HomeLegsFragment();
+                        break;
+
+                        //Yet to add login and logout
                 }
                 if(!home)
                     getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,temp).addToBackStack(null).commit();

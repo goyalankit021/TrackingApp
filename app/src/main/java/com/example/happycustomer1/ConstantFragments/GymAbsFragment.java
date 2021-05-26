@@ -1,19 +1,25 @@
-package com.example.happycustomer1;
+package com.example.happycustomer1.ConstantFragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.happycustomer1.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link GymWorkoutFragment#newInstance} factory method to
+ * Use the {@link GymAbsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class GymWorkoutFragment extends Fragment {
+public class GymAbsFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +30,11 @@ public class GymWorkoutFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public GymWorkoutFragment() {
+    //Varibles
+    androidx.appcompat.widget.Toolbar toolbarTop;
+    TextView mTitle;
+
+    public GymAbsFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +44,11 @@ public class GymWorkoutFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment GymWorkoutFragment.
+     * @return A new instance of fragment GymAbsFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static GymWorkoutFragment newInstance(String param1, String param2) {
-        GymWorkoutFragment fragment = new GymWorkoutFragment();
+    public static GymAbsFragment newInstance(String param1, String param2) {
+        GymAbsFragment fragment = new GymAbsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +69,15 @@ public class GymWorkoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gym_workout, container, false);
+        View view = inflater.inflate(R.layout.fragment_gym_abs, container, false);
+
+        toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
+
+        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle.setText("GYM WORKOUT");
+
+        //To change color
+        //toolbarTop.setBackgroundColor(Color.parseColor("#80000000"));
+        return view;
     }
 }

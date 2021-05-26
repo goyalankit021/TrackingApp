@@ -1,34 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<group
-    android:checkableBehavior="single">
-    <item
-        android:id="@+id/home"
-        android:title="@string/home_name"
-        android:icon="@drawable/dumbell"/>
-    <item
-        android:id="@+id/profile"
-        android:title="@string/profile_name"
-        android:icon="@drawable/dumbell"/>
-</group>
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/home_name" />
+        <item
+            android:id="@+id/First_Aid_Techniques"
+            android:icon="@drawable/firstaid1"
+            android:title="First Aid Techniques" />
+        <item
+            android:id="@+id/Coach_Details"
+            android:icon="@drawable/coach1"
+            android:title="Coach Details" />
+        <item
+            android:id="@+id/Trace_Me"
+            android:icon="@drawable/gps"
+            android:title="Trace Me" />
+    </group>
 
-    <item android:title="Exercises">
+    <item android:title="Profile">
         <menu>
-            <group
-                android:checkableBehavior="single">
-            <item
-                android:id="@+id/home1"
-                android:title="@string/home_name"
-                android:icon="@drawable/dumbell"/>
-            <item
-                android:id="@+id/profile1"
-                android:title="@string/profile_name"
-                android:icon="@drawable/dumbell"/>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/Profile"
+                    android:icon="@drawable/ic_baseline_account_circle_24"
+                    android:title="Profile" />
+                <item
+                    android:id="@+id/Login"
+                    android:icon="@drawable/ic_baseline_login_24"
+                    android:title="Login" />
+                <item
+                    android:id="@+id/Logout"
+                    android:icon="@drawable/ic_baseline_login_24"
+                    android:title="Logout" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="Gym Workout">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/Biceps_and_Back"
+                    android:icon="@drawable/biceps1"
+                    android:title="Biceps and Back" />
+                <item
+                    android:id="@+id/Chest_and_Triceps"
+                    android:icon="@drawable/chest1"
+                    android:title="Chest and Triceps" />
 
                 <item
-                    android:id="@+id/track_me"
-                    android:title="TRACK ME"
-                    android:icon="@drawable/dumbell"/>
+                    android:id="@+id/Shoulders"
+                    android:icon="@drawable/shoulder1"
+                    android:title="Shoulders" />
+                <item
+                    android:id="@+id/Abs"
+                    android:icon="@drawable/abs"
+                    android:title="Abs" />
+                <item
+                    android:id="@+id/Legs"
+                    android:icon="@drawable/legs"
+                    android:title="Legs" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Home Workout">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/Biceps_and_Back_h"
+                    android:icon="@drawable/biceps1"
+                    android:title="Biceps and Back" />
+                <item
+                    android:id="@+id/Chest_and_Triceps_h"
+                    android:icon="@drawable/chest1"
+                    android:title="Chest and Triceps" />
+
+                <item
+                    android:id="@+id/Shoulders_h"
+                    android:icon="@drawable/shoulder1"
+                    android:title="Shoulders" />
+                <item
+                    android:id="@+id/Abs_h"
+                    android:icon="@drawable/abs"
+                    android:title="Abs" />
+                <item
+                    android:id="@+id/Legs_h"
+                    android:icon="@drawable/legs"
+                    android:title="Legs" />
             </group>
         </menu>
     </item>

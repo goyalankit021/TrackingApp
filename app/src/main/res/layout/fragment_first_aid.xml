@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?android:attr/actionBarSize"
+    tools:context=".ConstantFragments.FirstAidFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/firstaid_constant"/>
+
+                <TextView
+                    android:id="@+id/fix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/bungee"
+                    android:gravity="center"
+                    android:text="Techniques"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+
+                <TextView
+                    android:id="@+id/content1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fix"
+                    android:fontFamily="sans-serif"
+                    android:text="Anything can happen when you workout even when you have been working out for years. These are the common
+types of injuries that people experience during workout sessions due to lack of doing warm-up and overtraining:
+\n\n1) Muscle pull and strain\n2) Sprained ankle\n3) Shoulder unjury\n4) Knee injuries\n5) Shin splint\n6) Tendinitis\n7) Dislocation"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content1"
+                    android:fontFamily="@font/bungee"
+                    android:text="Ways to prevent workout injuries"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading2"
+                    android:fontFamily="sans-serif"
+                    android:text="Always do a warm-up before working out because warm-up helps in increasing the heart rate and loosen up
+muscles joints such as star jumps, stretching, and other warm-ups. The body can also be protected from
+injuries when resting between exercises and using the right equipment. Always try to know your boundaries
+and take care of yourself during exercises to prevent injury."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content2"
+                    android:fontFamily="@font/bungee"
+                    android:text="Ways to treat workout injuries"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading3"
+                    android:fontFamily="sans-serif"
+                    android:text="It will take anywhere from a few weeks to a few months to make a successful recovery, based on the form of injury
+that has been suffered. It is crucial not to do too much too fast as it will prolong the recovery phase."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content3"
+                    android:fontFamily="@font/bungee"
+                    android:text="Strains"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading4"
+                    android:fontFamily="sans-serif"
+                    android:text="Muscle strains or muscle pulled can occur when a muscles is teared or overstretched. Some of the symptoms are
+swelling, pain and inability to use the muscle. RICE therapy should be used to treat minor strains.
+.\n1) Rest - avoid exercises\n2) Ice - apply ice pack for 20 mins every 2 hours\n3) Compression - using plastic compression such as bandages\n4) Elevation - keep injured body part raise above your heart to reduce swelling."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content4"
+                    android:fontFamily="@font/bungee"
+                    android:text="Back Pain"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading5"
+                    android:fontFamily="sans-serif"
+                    android:text="Lower back pain occurs when we lift heavier objects and usually it will cure without treatment but if its too painful an
+anti-inflammatory medications can help in healing the pain and with proper rest."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content5"
+                    android:fontFamily="@font/bungee"
+                    android:text="Dislocation"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading6"
+                    android:fontFamily="sans-serif"
+                    android:text="One of the most common injuries that people face. If you have a major injuries like dislocation and fractures the first
+thing to do is to stop the exercise. If you notice any dislocations don’t try to manipulate it. You can treat the area with
+ice packs and use ibuprofen or acetaminophen for pain and call the ambulance or contact a doctor as soon as
+possible."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

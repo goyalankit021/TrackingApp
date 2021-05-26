@@ -6,19 +6,216 @@
     android:layout_marginTop="?android:attr/actionBarSize"
     tools:context=".HomeFragment">
 
-    <TextView
-        android:id="@+id/steps"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:text="0"
-        android:textSize="48sp" />
+        android:layout_height="match_parent"
+        android:background="@color/lightWhite">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Steps"
-        android:gravity="center"
-        android:layout_marginTop="100dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/steps"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="48sp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Steps" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/round_bk2">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bungee"
+                        android:padding="25dp"
+                        android:text="Bicep Home\nWorkout"
+                        android:textColor="@color/black"
+                        android:textSize="30sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bicep_button"
+                        android:layout_alignParentBottom="true"
+                        android:background="#00000000"
+                        android:padding="20dp"
+                        android:text="   expand"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-25dp"
+                    android:src="@drawable/bicep" />
+            </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/round_bk5">
+
+                    <ImageView
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/coach" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bungee"
+                        android:padding="25dp"
+                        android:text="Coach \nDetails"
+                        android:textColor="@color/white"
+                        android:layout_alignParentRight="true"
+                        android:textSize="30sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:background="#00000000"
+                        android:padding="20dp"
+                        android:text="   expand"
+                        android:id="@+id/coach_button"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/round_bk2">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bungee"
+                        android:padding="25dp"
+                        android:text="First Aid \nTechniques"
+                        android:textColor="@color/black"
+                        android:textSize="30sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:background="#00000000"
+                        android:padding="20dp"
+                        android:id="@+id/firstaid_button"
+                        android:text="   expand"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-25dp"
+                    android:src="@drawable/firstaid" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/round_bk5">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/trace" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bungee"
+                    android:padding="20dp"
+                    android:text="Trace \nMe"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#00000000"
+                    android:padding="20dp"
+                    android:id="@+id/trace_button"
+                    android:text="   expand"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/round_bk2">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bungee"
+                        android:padding="25dp"
+                        android:text="Chest GYM\nWorkout"
+                        android:textColor="@color/black"
+                        android:textSize="30sp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:background="#00000000"
+                        android:padding="20dp"
+                        android:text="   expand"
+                        android:id="@+id/chest_button"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-25dp"
+                    android:src="@drawable/chest" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

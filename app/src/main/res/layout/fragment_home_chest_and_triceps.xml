@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?android:attr/actionBarSize"
+    tools:context=".ConstantFragments.HomeChestAndTricepsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/chest_constant"/>
+
+                <TextView
+                    android:id="@+id/fix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/bungee"
+                    android:gravity="center"
+                    android:text="chest and triceps"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/heading1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fix"
+                    android:fontFamily="@font/bungee"
+                    android:text="Wide Press-up"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading1"
+                    android:fontFamily="sans-serif"
+                    android:text="Perform a regular press-up, but divided wider than shoulder-width with your wrists."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content1"
+                    android:fontFamily="@font/bungee"
+                    android:text="Diamond Press-up"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading2"
+                    android:fontFamily="sans-serif"
+                    android:text="Carry out a press-up close enough with your hands to touch the tips of your thumbs and index fingers. It's like a
+diamond shape."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content2"
+                    android:fontFamily="@font/bungee"
+                    android:text="Alternating Shuffle Press-up"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading3"
+                    android:fontFamily="sans-serif"
+                    android:text="Begin by pushing your right hand to the left so your two hands are parallel to each other in the classic press-up
+posture. Slide your left hand further to the left until you again have your palms shoulder-width apart. Perform a
+press-up and repeat, turning to the right. There are two press-ups, but just a single rep."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content3"
+                    android:fontFamily="@font/bungee"
+                    android:text="Dynamic Box Press-up"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading4"
+                    android:fontFamily="sans-serif"
+                    android:text="In the diamond press-up pose, put your hands on a box. Lower the body and press the box explosively, so that your
+hands fall with the box between them on the concrete. Lower your body automatically and press up explosively so
+that your hands in the starting position land back on the box. This is one rep."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

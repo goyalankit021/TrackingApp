@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?android:attr/actionBarSize"
+    tools:context=".ConstantFragments.GymAbsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/abs_constant"/>
+
+                <TextView
+                    android:id="@+id/fix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/bungee"
+                    android:gravity="center"
+                    android:text="Abs Workout"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/heading1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fix"
+                    android:fontFamily="@font/bungee"
+                    android:text="Lying side raise"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading1"
+                    android:fontFamily="sans-serif"
+                    android:text="With fully stretched arms, palms shoulder width apart, lay face up and carry dumbbells overhead. Raise straight legs
+up and to the right hand and engage the core such that no tension is put on the low back. Keep back and rear flat
+against the mat, not encouraging your body to roll to the right or on the right hip. Tap your toes in the right side, then
+slowly drop your feet down to the floor. Repeat on the other side
+."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content1"
+                    android:fontFamily="@font/bungee"
+                    android:text="Abs roll with side rotation"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading2"
+                    android:fontFamily="sans-serif"
+                    android:text="Kneel on a hip-width mat with the legs apart. Grip the abs roller handles and roll forward, engaging with your core.
+Rotate the abs roller toward the right in an arch when you come forward so you engage the obliques. Without making
+your hips drop to the floor or hiking your hips up, roll out so far as you can. Roll back to the beginning place slowly
+and roll out again."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content2"
+                    android:fontFamily="@font/bungee"
+                    android:text="Sit-up and throw"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading3"
+                    android:fontFamily="sans-serif"
+                    android:text="With both hands in front of your face, carry an exercise ball and sit on the ground. Anchor your feet for stability under
+something solid, and lay back a few feet away from a brick or concrete wall on the pavement. Sit up and chuck the
+ball against the wall rapidly and then pick it on the bounce."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content3"
+                    android:fontFamily="@font/bungee"
+                    android:text="Straight-Leg Barbell Sit-up"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading4"
+                    android:fontFamily="sans-serif"
+                    android:text="Lie on the floor holding an empty or lightly loaded bar over your chest as in the top of a bench press. Your legs
+should be spread out in front of you on the concrete. Perform a sit-up, lifting the body until it's straight. Keep the bar
+over your head, so it drifts back to an overhead press position at the top of the sit-up."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

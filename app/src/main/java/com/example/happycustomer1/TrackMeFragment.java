@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -21,8 +22,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.TextView;
 
-import com.example.happycustomer1.utils.PlaceAutoSuggestAdapter;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -62,6 +63,10 @@ public class TrackMeFragment extends Fragment implements OnMapReadyCallback, Loc
     private String mParam1;
     private String mParam2;
 
+    //Varibles
+    androidx.appcompat.widget.Toolbar toolbarTop;
+    TextView mTitle;
+
     public TrackMeFragment() {
         // Required empty public constructor
     }
@@ -99,6 +104,10 @@ public class TrackMeFragment extends Fragment implements OnMapReadyCallback, Loc
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
+        toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
+
+        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle.setText("Trace Me");
         return inflater.inflate(R.layout.fragment_track_me, container, false);
 
     }

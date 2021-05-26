@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_marginTop="?android:attr/actionBarSize"
+    tools:context=".ConstantFragments.GymBicepsAndBackFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/biceps_constant"/>
+
+                <TextView
+                    android:id="@+id/fix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/bungee"
+                    android:gravity="center"
+                    android:text="biceps and back"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <TextView
+                    android:id="@+id/heading1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fix"
+                    android:fontFamily="@font/bungee"
+                    android:text="Barbell Bent-over Row"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading1"
+                    android:fontFamily="sans-serif"
+                    android:text="Grab a barbell with an overhand grip that splits your hands slightly wider than your shoulder width. Keep your back
+completely straight and your knees slightly extended, and lean your upper body upward. From here row the weight
+upwards into the lower part of your chest and return under control to the start position."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content1"
+                    android:fontFamily="@font/bungee"
+                    android:text="Underhand Inverted Row"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading2"
+                    android:fontFamily="sans-serif"
+                    android:text="Set up a bar in a rack at waist height. Hold it wider than shoulder-width apart, with an underhand grip, and hang
+underneath. Position yourself with heels out in front of you and arms fully extended. Your body should be straight
+from shoulders to ankles. Flex at the elbows to pull your chest up to the bar. Lower yourself back to the start position
+under control."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content2"
+                    android:fontFamily="@font/bungee"
+                    android:text="Face Pull"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading3"
+                    android:fontFamily="sans-serif"
+                    android:text="Attach rope handles to the top pulley on a cable machine. Kneel in front of it with one foot forward and flat on the
+grand. Grab the handles and pull them towards your face, drawing your hands apart and taking care to keep your
+upper arms flat. Pause, then reverse the movement.
+"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

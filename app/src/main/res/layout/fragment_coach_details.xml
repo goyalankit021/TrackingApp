@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?android:attr/actionBarSize"
+    tools:context=".ConstantFragments.CoachDetailsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/coach_constant"/>
+
+                <TextView
+                    android:id="@+id/fix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/bungee"
+                    android:gravity="center"
+                    android:text="Franklin"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+
+                <TextView
+                    android:layout_marginTop="-20dp"
+                    android:id="@+id/content1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/fix"
+                    android:fontFamily="sans-serif"
+                    android:text="Gym Coach"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/temp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/content1"
+                    android:fontFamily="sans-serif"
+                    android:text="No matter what their physical state might be, everyone may enhance their level of fitness. I want to help my customers do whatever the mission is. We will make your dreams possible by challenging yourself, dedication, not giving up together."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/email"
+                    android:layout_below="@id/temp"
+                    android:fontFamily="@font/bungee"
+                    android:text="Email: "
+                    android:textColor="@color/black"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/email1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/email"
+                    android:layout_below="@+id/temp"
+                    android:fontFamily="sans-serif"
+                    android:layout_marginTop="15dp"
+                    android:text="   www.FitnessCoach.com"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/phone"
+                    android:layout_below="@id/email"
+                    android:fontFamily="@font/bungee"
+                    android:text="Phone No: "
+                    android:textColor="@color/black"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/phone1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/phone"
+                    android:layout_below="@+id/email"
+                    android:fontFamily="sans-serif"
+                    android:text="(+60) 162875925"
+                    android:layout_marginTop="14dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/heading3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/phone"
+                    android:fontFamily="@font/bungee"
+                    android:text="Experience And Credentials"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading3"
+                    android:fontFamily="sans-serif"
+                    android:text="Personal Trainer with 3 years experience (ACE/ NASM/ International accreditation qualification) and Group Fitness Instructor-Boot camp, sign, abs and core, weight works."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content3"
+                    android:fontFamily="@font/bungee"
+                    android:text="Client base"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading4"
+                    android:fontFamily="sans-serif"
+                    android:text="Body Fat Loss, Lean Muscle Gain, Sport Specific Training, Performance Enhancement, Endurance Training, Youth Training and Development."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/heading5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/content4"
+                    android:fontFamily="@font/bungee"
+                    android:text="Personal Interest"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/content5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/heading5"
+                    android:fontFamily="sans-serif"
+                    android:text="I enjoy spending time with my family, friends and pets! I love running
+long distance, bike riding, fitness, animals, coaching, camping, hiking and running relays."
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+
+
+
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

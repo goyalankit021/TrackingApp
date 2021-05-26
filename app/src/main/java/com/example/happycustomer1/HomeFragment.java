@@ -10,13 +10,21 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.happycustomer1.ConstantFragments.CoachDetailsFragment;
+import com.example.happycustomer1.ConstantFragments.FirstAidFragment;
+import com.example.happycustomer1.ConstantFragments.GymChestAndTricepsFragment;
+import com.example.happycustomer1.ConstantFragments.HomeBicepsAndBackFragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -46,6 +54,13 @@ public class HomeFragment extends Fragment implements SensorEventListener {
     private String mParam1;
     private String mParam2;
 
+    //Button from xml
+    Button bicep_button,coach_button,firstaid_button,trace_button,chest_button;
+
+    //Varibles
+    androidx.appcompat.widget.Toolbar toolbarTop;
+    TextView mTitle;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -73,7 +88,63 @@ public class HomeFragment extends Fragment implements SensorEventListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view1 = inflater.inflate(R.layout.fragment_home, container, false);
+
+        toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle.setText("Dashboard");
+
+
+        //Creating hooks
+        bicep_button=(Button)view1.findViewById(R.id.bicep_button);
+        coach_button=(Button)view1.findViewById(R.id.coach_button);
+        firstaid_button=(Button)view1.findViewById(R.id.firstaid_button);
+        trace_button=(Button)view1.findViewById(R.id.trace_button);
+        chest_button=(Button)view1.findViewById(R.id.chest_button);
+
+
+        bicep_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity1 = (AppCompatActivity) view.getContext();
+                appCompatActivity1.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new HomeBicepsAndBackFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        coach_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity1 = (AppCompatActivity) view.getContext();
+                appCompatActivity1.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new CoachDetailsFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        firstaid_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity1 = (AppCompatActivity) view.getContext();
+                appCompatActivity1.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new FirstAidFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        trace_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity1 = (AppCompatActivity) view.getContext();
+                appCompatActivity1.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new TrackMeFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        chest_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity1 = (AppCompatActivity) view.getContext();
+                appCompatActivity1.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new GymChestAndTricepsFragment()).addToBackStack(null).commit();
+            }
+        });
+
+
+        return view1;
     }
 
     @Override

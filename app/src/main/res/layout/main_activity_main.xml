@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navmenu"
@@ -32,7 +32,6 @@
             android:background="@color/home_background"
             android:minHeight="?android:attr/actionBarSize">
 
-
             <TextView
                 android:id="@+id/toolbar_title"
                 android:layout_width="wrap_content"
@@ -41,7 +40,6 @@
                 android:fontFamily="@font/bungee"
                 android:text="@string/logo_name"
                 android:textSize="24sp" />
-
 
         </androidx.appcompat.widget.Toolbar>
 
