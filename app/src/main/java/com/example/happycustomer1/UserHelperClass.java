@@ -1,19 +1,17 @@
 package com.example.happycustomer1;
 
 public class UserHelperClass {
-    String signup_fullname,signup_username,signup_email,signup_password,gender,date,phoneNo;
+    String signup_fullname,signup_username,signup_email,gender,date;
 
     public UserHelperClass(){
 
     }
-    public UserHelperClass(String signup_fullname, String signup_username, String signup_email, String signup_password, String gender, String date, String phoneNo) {
+    public UserHelperClass(String signup_fullname, String signup_username, String signup_email, String gender, String date) {
         this.signup_fullname = signup_fullname;
         this.signup_username = signup_username;
         this.signup_email = signup_email;
-        this.signup_password = signup_password;
         this.gender = gender;
         this.date = date;
-        this.phoneNo = phoneNo;
     }
 
     public String getSignup_fullname() {
@@ -40,14 +38,6 @@ public class UserHelperClass {
         this.signup_email = signup_email;
     }
 
-    public String getSignup_password() {
-        return signup_password;
-    }
-
-    public void setSignup_password(String signup_password) {
-        this.signup_password = signup_password;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -62,13 +52,5 @@ public class UserHelperClass {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getPhoneNo() {
-        return phoneNo;
-    }
-
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
     }
 }

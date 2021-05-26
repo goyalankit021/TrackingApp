@@ -161,11 +161,11 @@ public class ForgetPasswordFragment extends Fragment {
                             bundle.putString("phoneNo",_completePhoneNumber);
                             bundle.putString("whatToDO","updateData");
 
-                            ProfileSignUpOTPFragment fragment= new ProfileSignUpOTPFragment();
-                            fragment.setArguments(bundle);
+//                            ProfileSignUpOTPFragment fragment= new ProfileSignUpOTPFragment();
+//                            fragment.setArguments(bundle);
 
-                            AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
-                            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, fragment).commit();
+//                            AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+//                            appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, fragment).commit();
 
                             forgetProgressBar.setVisibility(View.GONE);
                         }
