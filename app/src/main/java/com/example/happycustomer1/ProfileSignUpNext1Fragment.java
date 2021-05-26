@@ -22,8 +22,11 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -151,12 +154,19 @@ public class ProfileSignUpNext1Fragment extends Fragment {
                 String signup_email=bundle.getString("signup_email");
                 String gender=bundle.getString("gender");
                 date=bundle.getString("date");
-                FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-                DatabaseReference reference = rootNode.getReference("Users");
+//                FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+//                DatabaseReference reference = rootNode.getReference("Users");
+                Map<String, Object> user = new HashMap<>();
+                user.put("full_name", signup_fullname);
+                user.put("user_name", signup_username);
+                user.put("gender", gender);
+                user.put("birth_date", date);
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("users").document(signup_email).set(user);
 
                 //Create helperclass reference and store data using firebase
-                UserHelperClass addNewUser = new UserHelperClass(signup_fullname,signup_username,signup_email,gender,date);
-                reference.push().setValue(addNewUser);
+//                UserHelperClass addNewUser = new UserHelperClass(signup_fullname,signup_username,signup_email,gender,date);
+//                reference.push().setValue(addNewUser);
 
 
 

@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     ActionBarDrawerToggle toggle;
     androidx.appcompat.widget.Toolbar toolbar;
     RelativeLayout contentView;
+    Fragment ProfileClassObject=new ProfileFragment();
     boolean IS_LOGIN=false;
 
     static final float END_SCALE=0.7f;
@@ -79,10 +80,12 @@ public class MainActivity extends AppCompatActivity {
                 if(user != null){
                     Logout.setVisible(true);
                     Login.setVisible(false);
+                    ProfileClassObject = new UserProfileAfterLoginFragment();
                 }
                 else {
                     Login.setVisible(true);
                     Logout.setVisible(false);
+                    ProfileClassObject = new ProfileFragment();
                 }
             }
         });
@@ -126,12 +129,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.Profile:
-                        if(IS_LOGIN){
-                        temp=new UserProfileAfterLoginFragment();}
-                        else
-                        {
-                            temp=new ProfileLoginFragment();
-                        }
+                        temp=(Fragment)ProfileClassObject;
                         break;
 
                     case R.id.Biceps_and_Back:
