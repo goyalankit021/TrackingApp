@@ -168,7 +168,9 @@ public class HomeFragment extends Fragment implements SensorEventListener {
             @Override
             public boolean onLongClick(View v) {
                 previousTotalSteps=totalSteps;
-                steps.setText(String.valueOf(0));
+                if(mStepCounter!=null) {
+                    steps.setText(String.valueOf(0));
+                }
                 saveData();
                 return true;
             }
