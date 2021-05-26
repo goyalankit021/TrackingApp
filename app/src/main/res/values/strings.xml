@@ -30,7 +30,7 @@
 
 
     <string name="forget_password_1">FORGET PASSWORD</string>
-    <string name="forget_password_details">Provide your account email for which you want to reset your password.</string>
+    <string name="forget_password_details">Provide your phone number for which you want to reset your password.</string>
 
     <string name="make_selection">MAKE \nSELECTION</string>
     <string name="make_selection_detail">Select which contact detail should we use to reset your password?</string>
@@ -40,6 +40,6 @@
     <string name="new_credentials">New \nPassword</string>
     <string name="new_credentials_detail">Confirm \nNew Password</string>
 
-    <string name="password_updated">PASSWORD \nUPDATED</string>
-    <string name="password_updated_success_message">your password has been updated</string>
+    <string name="password_updated">PASSWORD UPDATED</string>
+    <string name="password_updated_success_message">Your password has been updated</string>
 </resources>

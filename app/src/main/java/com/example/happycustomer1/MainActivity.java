@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
 
         //Setting home dashboard fragment on screen
-        getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.wrapper,new HomeFragment()).commit();
 
         //Navigation Drawer
         navigationView.setCheckedItem(R.id.home);
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                         //Yet to add login and logout
                 }
                 if(!home)
-                    getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,temp).addToBackStack(null).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,temp).commit();
                 else
                     getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,temp).commit();
                 drawerLayout.closeDrawer(GravityCompat.START);

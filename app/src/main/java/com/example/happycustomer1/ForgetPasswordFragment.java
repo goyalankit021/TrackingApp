@@ -3,19 +3,23 @@ package com.example.happycustomer1;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
@@ -48,6 +52,11 @@ public class ForgetPasswordFragment extends Fragment {
     TextInputLayout forget_phone_number;
     Button forget_password_next_btn;
     RelativeLayout forgetProgressBar;
+    ImageView forget_password_bck_button;
+
+    //Varibles
+    androidx.appcompat.widget.Toolbar toolbarTop;
+    TextView mTitle;
 
     public ForgetPasswordFragment() {
         // Required empty public constructor
@@ -91,6 +100,27 @@ public class ForgetPasswordFragment extends Fragment {
         forget_phone_number=(TextInputLayout)view1.findViewById(R.id.forget_phone_number);
         forget_password_next_btn=(Button)view1.findViewById(R.id.forget_password_next_btn);
         forgetProgressBar=(RelativeLayout)view1.findViewById(R.id.forgetProgressBar);
+
+        forget_password_bck_button=(ImageView)view1.findViewById(R.id.forget_password_back_btn);
+
+        //To change color and heading on toolbar
+        toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle.setText("PROFILE");
+
+        //To change color
+        toolbarTop.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
+
+        //Back to home screen on close btton
+        forget_password_bck_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileLoginFragment()).commit();
+            }
+        });
+
 
         forget_password_next_btn.setOnClickListener(new View.OnClickListener() {
             @Override

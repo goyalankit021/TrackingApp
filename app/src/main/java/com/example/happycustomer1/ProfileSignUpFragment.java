@@ -1,14 +1,19 @@
 package com.example.happycustomer1;
 
+import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -26,7 +31,11 @@ public class ProfileSignUpFragment extends Fragment {
 
     //Custom Variables
     TextInputLayout signup_fullname, signup_username, signup_email, signup_password;
+    ImageView signup_back_button;
 
+    //Varibles
+    androidx.appcompat.widget.Toolbar toolbarTop;
+    TextView mTitle;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -71,17 +80,30 @@ public class ProfileSignUpFragment extends Fragment {
         // here you have the reference of your button
         Button nextButton = (Button) view.findViewById(R.id.signup_next_button);
         Button loginButton = (Button) view.findViewById(R.id.signup_login_button);
+        signup_back_button=(ImageView)view.findViewById(R.id.signup_back_button);
 
 
+        //To change color and heading on toolbar
+        toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle.setText("PROFILE");
+        //To change color
+        toolbarTop.setBackgroundColor(Color.parseColor("#ffe400"));
+
+
+        //Sending back to profile on pressing back
+        signup_back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileSignUpFragment()).commit();
+            }
+        });
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //Code for sending data from one fragment to another
-                Bundle bundle=new Bundle();
-
 
                 AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
                 appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileLoginFragment()).commit();

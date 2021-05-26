@@ -1,8 +1,10 @@
 package com.example.happycustomer1;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -10,8 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -32,6 +36,12 @@ public class ProfileSignUpNext1Fragment extends Fragment {
     RadioGroup radio_group;
     RadioButton selectedAge;
     DatePicker age_picker;
+
+    ImageView signup_back_button;
+
+    //Varibles
+    androidx.appcompat.widget.Toolbar toolbarTop;
+    TextView mTitle;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -75,7 +85,25 @@ public class ProfileSignUpNext1Fragment extends Fragment {
         // here you have the reference of your button
         Button nextButton = (Button)view1.findViewById(R.id.signup_next_button);
         Button loginButton = (Button)view1.findViewById(R.id.signup_login_button);
+        signup_back_button=(ImageView)view1.findViewById(R.id.signup_back_button);
 
+
+        //To change color and heading on toolbar
+        toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle.setText("PROFILE");
+        //To change color
+        toolbarTop.setBackgroundColor(Color.parseColor("#ffe400"));
+
+
+        //Sending back to profile on pressing back
+        signup_back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileSignUpFragment()).commit();
+            }
+        });
 
         //XML File hooks
         radio_group=(RadioGroup)view1.findViewById(R.id.radio_group);
@@ -92,7 +120,7 @@ public class ProfileSignUpNext1Fragment extends Fragment {
 
 
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!validateGender()){
@@ -120,11 +148,11 @@ public class ProfileSignUpNext1Fragment extends Fragment {
             }
         });
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
-                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileSignUpNext2Fragment()).commit();
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileLoginFragment()).commit();
             }
         });
 

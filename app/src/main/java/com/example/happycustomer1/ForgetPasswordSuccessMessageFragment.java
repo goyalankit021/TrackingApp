@@ -1,12 +1,17 @@
 package com.example.happycustomer1;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +28,12 @@ public class ForgetPasswordSuccessMessageFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //Varibles
+    androidx.appcompat.widget.Toolbar toolbarTop;
+    TextView mTitle;
+
+    Button success_message_btn;
 
     public ForgetPasswordSuccessMessageFragment() {
         // Required empty public constructor
@@ -59,6 +70,26 @@ public class ForgetPasswordSuccessMessageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forget_password_success_message, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        success_message_btn=(Button) view.findViewById(R.id.success_message_btn);
+        //To change color and heading on toolbar
+        toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle.setText("PROFILE");
+
+        //To change color
+        toolbarTop.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
+
+        //Calling login screen
+        success_message_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileLoginFragment()).commit();
+            }
+        });
+        return view;
     }
 }

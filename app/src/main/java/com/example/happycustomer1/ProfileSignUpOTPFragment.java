@@ -1,16 +1,19 @@
 package com.example.happycustomer1;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +56,11 @@ public class ProfileSignUpOTPFragment extends Fragment {
     String codeBySystem;
     Button verify_button;
     TextView otp_description_text;
+    ImageView close_button;
+
+    //Varibles
+    androidx.appcompat.widget.Toolbar toolbarTop;
+    TextView mTitle;
 
     //Data of user
     String signup_fullname,signup_username,signup_email,signup_password,gender,date,phoneNo,whatToDO;
@@ -98,6 +106,25 @@ public class ProfileSignUpOTPFragment extends Fragment {
         pin_view=(PinView)view1.findViewById(R.id.pin_view);
         verify_button=(Button)view1.findViewById(R.id.verify_button);
         otp_description_text=(TextView)view1.findViewById(R.id.otp_description_text);
+        close_button=(ImageView)view1.findViewById(R.id.close_button);
+
+        //To change color and heading on toolbar
+        toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle.setText("PROFILE");
+
+        //To change color
+        toolbarTop.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
+
+        //Back to home screen on close btton
+        close_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileFragment()).commit();
+            }
+        });
 
 
 
@@ -131,6 +158,11 @@ public class ProfileSignUpOTPFragment extends Fragment {
                 if(!code.isEmpty()){
                     verifyCode(code);
                 }
+                else
+                {
+                    Toast.makeText(getContext(),"Please enter otp and press verify",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -226,6 +258,9 @@ public class ProfileSignUpOTPFragment extends Fragment {
         UserHelperClass addNewUser = new UserHelperClass(signup_fullname,signup_username,signup_email,signup_password,gender,date,phoneNo);
         reference.child(phoneNo).setValue(addNewUser);
 
+        //Taking him to Profile
+        AppCompatActivity appCompatActivity = (AppCompatActivity) getContext();
+        appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new UserProfileAfterLoginFragment()).commit();
         //We will also create a Session here in next videos to keep the user logged In
 /*Have to do code here by myseld
         startActivity(new Intent(getApplicationContext(), RetailerDashboard.class));

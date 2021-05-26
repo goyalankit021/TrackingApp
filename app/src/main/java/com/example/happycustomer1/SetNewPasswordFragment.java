@@ -3,18 +3,22 @@ package com.example.happycustomer1;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +45,11 @@ public class SetNewPasswordFragment extends Fragment {
     TextInputLayout new_password,confirm_password;
     RelativeLayout forgetProgressBarNew;
     String phoneNo;
+    ImageView forget_close_button;
+
+    //Varibles
+    androidx.appcompat.widget.Toolbar toolbarTop;
+    TextView mTitle;
 
     public SetNewPasswordFragment() {
         // Required empty public constructor
@@ -83,6 +92,26 @@ public class SetNewPasswordFragment extends Fragment {
         confirm_password=(TextInputLayout)view.findViewById(R.id.confirm_password);
         set_new_password_btn=(Button)view.findViewById(R.id.set_new_password_btn);
         forgetProgressBarNew=(RelativeLayout)view.findViewById(R.id.forgetProgressBarNew);
+        forget_close_button=(ImageView)view.findViewById(R.id.forget_close_button);
+
+
+        //To change color and heading on toolbar
+        toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle.setText("PROFILE");
+
+        //To change color
+        toolbarTop.setBackgroundColor(Color.parseColor("#FFFFFF"));
+
+        //Close button
+        forget_close_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileLoginFragment()).commit();
+            }
+        });
+
 
         //Data From Previous Fragment
         Bundle bundle=this.getArguments();
@@ -110,7 +139,7 @@ public class SetNewPasswordFragment extends Fragment {
 
                 AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
                 appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ForgetPasswordSuccessMessageFragment()).commit();
-
+                forgetProgressBarNew.setVisibility(View.GONE);
 
             }
         });

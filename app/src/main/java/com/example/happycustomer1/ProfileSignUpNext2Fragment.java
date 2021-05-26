@@ -1,14 +1,18 @@
 package com.example.happycustomer1;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.hbb20.CountryCodePicker;
@@ -33,6 +37,11 @@ public class ProfileSignUpNext2Fragment extends Fragment {
     CountryCodePicker country_code_picker;
     TextInputLayout signup_phone_number;
     Button signup_login_button,signup_next_button;
+    ImageView signup_back_button;
+
+    //Varibles
+    androidx.appcompat.widget.Toolbar toolbarTop;
+    TextView mTitle;
 
     public ProfileSignUpNext2Fragment() {
         // Required empty public constructor
@@ -76,6 +85,15 @@ public class ProfileSignUpNext2Fragment extends Fragment {
         signup_phone_number=(TextInputLayout)view.findViewById(R.id.signup_phone_number);
         signup_login_button=(Button)view.findViewById(R.id.signup_login_button);
         signup_next_button=(Button)view.findViewById(R.id.signup_next_button);
+        signup_back_button=(ImageView)view.findViewById(R.id.signup_back_button);
+
+
+        //To change color and heading on toolbar
+        toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle.setText("PROFILE");
+        //To change color
+        toolbarTop.setBackgroundColor(Color.parseColor("#ffe400"));
 
         //Data From Previous Fragment
         Bundle bundle=this.getArguments();
@@ -101,6 +119,14 @@ public class ProfileSignUpNext2Fragment extends Fragment {
                 AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
                 appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, fragment2).commit();
 
+            }
+        });
+
+        signup_login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileLoginFragment()).commit();
             }
         });
 

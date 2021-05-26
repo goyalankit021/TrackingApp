@@ -1,8 +1,10 @@
 package com.example.happycustomer1;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.util.Pair;
@@ -28,6 +30,11 @@ public class ProfileFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
+    //Varibles
+    androidx.appcompat.widget.Toolbar toolbarTop;
+    TextView mTitle;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -86,6 +93,15 @@ public class ProfileFragment extends Fragment {
                 appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileSignUpFragment()).commit();
             }
         });
+
+
+        //To change color and heading on toolbar
+        toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle.setText("PROFILE");
+
+        //To change color
+        toolbarTop.setBackgroundColor(Color.parseColor("#FFFFFF"));
 
         return view;
     }

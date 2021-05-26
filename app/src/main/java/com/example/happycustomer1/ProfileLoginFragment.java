@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkInfo;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.provider.Settings;
@@ -18,8 +20,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -50,9 +54,14 @@ public class ProfileLoginFragment extends Fragment {
 
     //Xml Files variables
     Button login_button, create_account_button, forget_password_button;
+    ImageView login_back_button;
     CountryCodePicker login_country_code_picker;
     TextInputLayout login_phone_number, login_password;
     RelativeLayout progressBar;
+
+    //Varibles
+    androidx.appcompat.widget.Toolbar toolbarTop;
+    TextView mTitle;
 
     public ProfileLoginFragment() {
         // Required empty public constructor
@@ -91,6 +100,15 @@ public class ProfileLoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View view1 = inflater.inflate(R.layout.fragment_profile_login, container, false);
 
+        //Changing color of toolbar
+        //To change color and heading on toolbar
+        toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
+        mTitle.setText("profile");
+
+        //To change color
+        toolbarTop.setBackgroundColor(Color.parseColor("#ffe400"));
+
         //Hooks
         login_button = (Button) view1.findViewById(R.id.login_button);
         forget_password_button = (Button) view1.findViewById(R.id.forget_password_button);
@@ -99,6 +117,26 @@ public class ProfileLoginFragment extends Fragment {
         login_password = (TextInputLayout) view1.findViewById(R.id.login_password);
         progressBar = (RelativeLayout) view1.findViewById(R.id.progressBar);
         create_account_button = (Button) view1.findViewById(R.id.create_account_button);
+        login_back_button=(ImageView) view1.findViewById(R.id.login_back_button);
+
+
+        //Click on back button replace with previous fragment
+        login_back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileFragment()).commit();
+            }
+        });
+
+        //Click on will take you to signup screen
+        create_account_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
+                appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ProfileSignUpFragment()).commit();
+            }
+        });
 
         //Click on login button
         login_button.setOnClickListener(new View.OnClickListener() {
@@ -149,6 +187,7 @@ public class ProfileLoginFragment extends Fragment {
                                 //Create a session might be error because of view
                                 SessionManager sessionManager = new SessionManager(view.getContext());
                                 sessionManager.createLoginSession(_fullname, _username, _email, _password, _gender, _date, _phoneNo);
+
                                 AppCompatActivity appCompatActivity1 = (AppCompatActivity) view.getContext();
                                 appCompatActivity1.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new UserProfileAfterLoginFragment()).commit();
 
