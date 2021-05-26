@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -33,6 +34,8 @@ import com.example.happycustomer1.ConstantFragments.HomeChestAndTricepsFragment;
 import com.example.happycustomer1.ConstantFragments.HomeLegsFragment;
 import com.example.happycustomer1.ConstantFragments.HomeShouldersFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,6 +60,24 @@ public class MainActivity extends AppCompatActivity {
         //Drawer hooks
         drawerLayout=findViewById(R.id.drawerLayout);
         navigationView=findViewById(R.id.navmenu);
+        Menu menu = navigationView.getMenu();
+        MenuItem Login = menu.getItem(2);
+        MenuItem Logout = menu.getItem(3);
+
+        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null){
+                    Logout.setVisible(true);
+                    Login.setVisible(false);
+                }else{
+                    Login.setVisible(true);
+                    Logout.setVisible(false);
+                }
+            }
+        });
+
         toolbar=(androidx.appcompat.widget.Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -99,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.Profile:
                         temp=new ProfileFragment();
                         break;
-
 
                     case R.id.Biceps_and_Back:
                         temp=new GymBicepsAndBackFragment();

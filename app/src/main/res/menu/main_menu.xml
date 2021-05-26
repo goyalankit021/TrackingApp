@@ -6,34 +6,36 @@
             android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/home_name" />
         <item
-            android:id="@+id/First_Aid_Techniques"
-            android:icon="@drawable/firstaid1"
-            android:title="First Aid Techniques" />
+            android:id="@+id/Profile"
+            android:icon="@drawable/ic_baseline_account_circle_24"
+            android:title="Profile" />
         <item
-            android:id="@+id/Coach_Details"
-            android:icon="@drawable/coach1"
-            android:title="Coach Details" />
+            android:id="@+id/Login"
+            android:icon="@drawable/ic_baseline_login_24"
+            android:title="Login" />
         <item
-            android:id="@+id/Trace_Me"
-            android:icon="@drawable/gps"
-            android:title="Trace Me" />
+            android:id="@+id/Logout"
+            android:icon="@drawable/ic_baseline_login_24"
+            android:title="Logout" />
+
     </group>
 
     <item android:title="Profile">
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/Profile"
-                    android:icon="@drawable/ic_baseline_account_circle_24"
-                    android:title="Profile" />
+                    android:id="@+id/First_Aid_Techniques"
+                    android:icon="@drawable/firstaid1"
+                    android:title="First Aid Techniques" />
                 <item
-                    android:id="@+id/Login"
-                    android:icon="@drawable/ic_baseline_login_24"
-                    android:title="Login" />
+                    android:id="@+id/Coach_Details"
+                    android:icon="@drawable/coach1"
+                    android:title="Coach Details" />
                 <item
-                    android:id="@+id/Logout"
-                    android:icon="@drawable/ic_baseline_login_24"
-                    android:title="Logout" />
+                    android:id="@+id/Trace_Me"
+                    android:icon="@drawable/gps"
+                    android:title="Trace Me" />
+
             </group>
         </menu>
     </item>
