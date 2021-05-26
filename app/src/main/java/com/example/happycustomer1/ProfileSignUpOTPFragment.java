@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -170,37 +172,40 @@ public class ProfileSignUpOTPFragment extends Fragment {
     }
 
     private void sendVerificationCodeToUser(String phoneNo) {
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                phoneNo,        // Phone number to verify
-                60,                 // Timeout duration
-                TimeUnit.SECONDS,   // Unit of timeout
-                //Next Line Might Show error video link:https://www.youtube.com/watch?v=lk4du-8giyQ
-                getActivity(),// Activity (for callback binding)
-                mCallbacks);        // OnVerificationStateChangedCallbacks
+        PhoneAuthProvider.verifyPhoneNumber(
+                PhoneAuthOptions
+                        .newBuilder(FirebaseAuth.getInstance())
+                        .setActivity(getActivity())
+                        .setPhoneNumber(phoneNo)
+                        .setTimeout(60L, TimeUnit.SECONDS)
+                        .setCallbacks(mCallbacks)
+                        .build());       // OnVerificationStateChangedCallbacks
 
     }
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks =
             new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                 @Override
-                public void onCodeSent(@NonNull @NotNull String s, @NonNull @NotNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                    super.onCodeSent(s, forceResendingToken);
+                public void onCodeSent(@NonNull @NotNull String s, @NotNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+//                    super.onCodeSent(s, forceResendingToken);
                     codeBySystem = s;
+                    Log.i("CODE_SENT", "Code success sent"+s);
                 }
 
                 @Override
-                public void onVerificationCompleted(@NonNull @NotNull PhoneAuthCredential phoneAuthCredential) {
+                public void onVerificationCompleted( @NotNull PhoneAuthCredential phoneAuthCredential) {
                     String code = phoneAuthCredential.getSmsCode();
                     if (code != null) {
                         pin_view.setText(code);
                         verifyCode(code);
                     }
+                    Log.i("CODE_SENT", "verification complete"+code);
                 }
 
                 @Override
-                public void onVerificationFailed(@NonNull @NotNull FirebaseException e) {
+                public void onVerificationFailed(@NotNull FirebaseException e) {
                     Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-
+                    Log.i("CODE_SENT", "verification failed");
                 }
             };
 

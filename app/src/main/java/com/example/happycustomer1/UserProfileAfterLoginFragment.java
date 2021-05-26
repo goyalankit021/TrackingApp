@@ -1,5 +1,7 @@
 package com.example.happycustomer1;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
@@ -100,6 +102,12 @@ public class UserProfileAfterLoginFragment extends Fragment {
 
         //Textfield for gender
         gender=(TextView)view1.findViewById(R.id.Gender);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userLoginSession", Context.MODE_PRIVATE);
+        String fullNameSH = sharedPreferences.getString("fullName","Unknown");
+        String genderSH = sharedPreferences.getString("gender","Unknown");
+        username.setText(fullNameSH);
+        gender.setText(genderSH);
+
 
         //After this code is complete
         height=(EditText)view1.findViewById(R.id.height);

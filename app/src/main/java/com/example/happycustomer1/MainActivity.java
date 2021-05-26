@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         MenuItem Logout = menu.getItem(3);
 
         SharedPreferences sharedPreferences=getSharedPreferences("userLoginSession", Context.MODE_PRIVATE);
-        IS_LOGIN=sharedPreferences.getBoolean("IS_LOGIN",false);
+        IS_LOGIN=sharedPreferences.getBoolean("IsLoggedIn",false);
         if(IS_LOGIN) {
             Logout.setVisible(true);
             Login.setVisible(false);
