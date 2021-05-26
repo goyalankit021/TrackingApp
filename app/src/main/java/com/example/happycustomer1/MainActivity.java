@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -23,6 +24,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.happycustomer1.ConstantFragments.CoachDetailsFragment;
 import com.example.happycustomer1.ConstantFragments.FirstAidFragment;
@@ -39,6 +41,8 @@ import com.example.happycustomer1.ConstantFragments.HomeShouldersFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import org.jetbrains.annotations.NotNull;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,16 +72,21 @@ public class MainActivity extends AppCompatActivity {
         MenuItem Login = menu.getItem(2);
         MenuItem Logout = menu.getItem(3);
 
-        SharedPreferences sharedPreferences=getSharedPreferences("userLoginSession", Context.MODE_PRIVATE);
-        IS_LOGIN=sharedPreferences.getBoolean("IsLoggedIn",false);
-        if(IS_LOGIN) {
-            Logout.setVisible(true);
-            Login.setVisible(false);
-        }
-        else {
-            Login.setVisible(true);
-            Logout.setVisible(false);
-        }
+        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull @NotNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if(user != null){
+                    Logout.setVisible(true);
+                    Login.setVisible(false);
+                }
+                else {
+                    Login.setVisible(true);
+                    Logout.setVisible(false);
+                }
+            }
+        });
+
 
         toolbar=(androidx.appcompat.widget.Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -164,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.Logout:
                         FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(getApplicationContext(),"You have been logged out",Toast.LENGTH_SHORT).show();
                         temp=new HomeFragment();
                         break;
 

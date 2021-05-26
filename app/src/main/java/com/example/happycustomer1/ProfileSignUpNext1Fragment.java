@@ -1,6 +1,7 @@
 package com.example.happycustomer1;
 
 import android.graphics.Color;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
@@ -139,10 +144,24 @@ public class ProfileSignUpNext1Fragment extends Fragment {
                 bundle.putString("gender",_gender);
                 bundle.putString("date",date);
 
-                ProfileSignUpNext2Fragment fragment2= new ProfileSignUpNext2Fragment();
-                fragment2.setArguments(bundle);
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(bundle.getString("signup_email"),
+                        bundle.getString("signup_password"));
+                String signup_fullname=bundle.getString("signup_fullname");
+                String signup_username=bundle.getString("signup_username");
+                String signup_email=bundle.getString("signup_email");
+                String gender=bundle.getString("gender");
+                date=bundle.getString("date");
+                FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+                DatabaseReference reference = rootNode.getReference("Users");
+
+                //Create helperclass reference and store data using firebase
+                UserHelperClass addNewUser = new UserHelperClass(signup_fullname,signup_username,signup_email,gender,date);
+                reference.push().setValue(addNewUser);
 
 
+
+                HomeFragment fragment2= new HomeFragment();
+//
                 AppCompatActivity appCompatActivity = (AppCompatActivity) view.getContext();
                 appCompatActivity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, fragment2).commit();
             }

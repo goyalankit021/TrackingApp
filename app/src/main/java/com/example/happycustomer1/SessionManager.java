@@ -27,7 +27,7 @@ public class SessionManager {
         editor = usersSession.edit();
     }
 
-    public void createLoginSession(String signup_fullname, String signup_username, String signup_email, String signup_password, String gender, String date, String phoneNo) {
+    public void  createLoginSession(String signup_fullname, String signup_username, String signup_email, String signup_password, String gender, String date, String phoneNo) {
         editor.putBoolean(IS_LOGIN, true);
 
         editor.putString(KEY_FULLNAME, signup_fullname);
