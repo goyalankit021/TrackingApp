@@ -287,9 +287,11 @@ public class ProfileLoginFragment extends Fragment {
                     showCustomDialog(view);
                 }
 
-                if (!validateEmail()) {
+                if (!validateOnlyEmail()) {
                     return;
                 }
+
+
                 String _email = login_email.getEditText().getText().toString().trim();
                 FirebaseAuth.getInstance().sendPasswordResetEmail(_email);
                 Toast.makeText(getContext(),"Reset password link has been sent to registered email",Toast.LENGTH_SHORT).show();
@@ -297,6 +299,25 @@ public class ProfileLoginFragment extends Fragment {
         });
 
         return view1;
+    }
+
+    private boolean validateOnlyEmail() {
+        String _email = login_email.getEditText().getText().toString().trim();
+        String checkEmail = "[a-zA-Z0-9._-]+@[a-z]+.+[a-z]+";
+        if (_email.isEmpty()) {
+            login_email.setError("Email can not be empty");
+            login_email.requestFocus();
+            return false;
+        }
+        else if(!_email.matches(checkEmail)){
+            login_email.setError("Invalid Email!");
+            login_email.requestFocus();
+            return false;
+        } else {
+            login_email.setError(null);
+            login_email.setErrorEnabled(false);
+            return true;
+        }
     }
 
     private void showCustomDialog(View view) {
@@ -357,8 +378,14 @@ public class ProfileLoginFragment extends Fragment {
     public boolean validateEmail() {
         String _email = login_email.getEditText().getText().toString().trim();
         String _password = login_password.getEditText().getText().toString().trim();
+        String checkEmail = "[a-zA-Z0-9._-]+@[a-z]+.+[a-z]+";
         if (_email.isEmpty()) {
-            login_email.setError("Phone number can not be empty");
+            login_email.setError("Email can not be empty");
+            login_email.requestFocus();
+            return false;
+        }
+        else if(!_email.matches(checkEmail)){
+            login_email.setError("Invalid Email!");
             login_email.requestFocus();
             return false;
         }
@@ -374,4 +401,6 @@ public class ProfileLoginFragment extends Fragment {
             return true;
         }
     }
+
+
 }

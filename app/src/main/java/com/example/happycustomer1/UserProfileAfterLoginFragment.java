@@ -2,6 +2,7 @@ package com.example.happycustomer1;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
@@ -96,6 +97,9 @@ public class UserProfileAfterLoginFragment extends Fragment {
         mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
         mTitle.setText("profile");
 
+        //To change color
+        toolbarTop.setBackgroundColor(Color.parseColor("#f2f5f8"));
+
 
         //Text Field for Name
         username=(TextView)view1.findViewById(R.id.username);
@@ -115,7 +119,7 @@ public class UserProfileAfterLoginFragment extends Fragment {
         bmi_button=(Button)view1.findViewById(R.id.emi_button);
 
         bmi_category=(TextView)view1.findViewById(R.id.bmi_catergory);
-        bmi_value=(TextView)view1.findViewById(R.id.bmi_catergory);
+        bmi_value=(TextView)view1.findViewById(R.id.bmi_value);
 
         bmi_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +158,7 @@ public class UserProfileAfterLoginFragment extends Fragment {
         }
 
         float weight_val_int=Float.valueOf(weightVal);
-        float height_val_int=Float.valueOf(weightVal);
+        float height_val_int=Float.valueOf(heightVal);
         float val=(weight_val_int/(height_val_int*height_val_int))*10000;
         bmi_value.setText(String.valueOf(val));
 

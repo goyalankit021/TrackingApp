@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#FF0000"
+                    android:backgroundTint="#e62e3a"
                     android:text="Yes"
                     app:cornerRadius="20dp" />
 
@@ -69,6 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
+                    android:backgroundTint="#fee300"
                     android:text="No"
                     app:cornerRadius="20dp" />
             </LinearLayout>

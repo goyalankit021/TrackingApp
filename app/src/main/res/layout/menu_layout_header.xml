@@ -32,6 +32,7 @@
     <ImageView
         android:layout_width="160dp"
         android:layout_height="175dp"
+        android:layout_toRightOf="@+id/menu_slogan"
         android:src="@drawable/run"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="10dp"
