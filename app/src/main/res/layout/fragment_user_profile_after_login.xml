@@ -5,11 +5,156 @@
     android:layout_height="match_parent"
     tools:context=".UserProfileAfterLoginFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/temp"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/user_profile"/>
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:fontFamily="@font/bungee"
+        android:gravity="center"
+        android:text="Franklin"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+        <TextView
+            android:layout_marginTop="-20dp"
+            android:id="@+id/Gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/username"
+            android:fontFamily="sans-serif"
+            android:text="Male"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/bmi_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Gender"
+            android:fontFamily="@font/bungee"
+            android:text="Body Mass Index Calculator"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Height_heading"
+            android:layout_below="@id/bmi_heading"
+            android:fontFamily="@font/bungee"
+            android:text="Height: "
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/Height_heading"
+            android:layout_below="@+id/bmi_heading"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="4dp"
+            android:textColorHint="@color/black"
+            android:hint="Enter height in cm, Eg: 175"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Weight_heading"
+            android:layout_below="@id/Height_heading"
+            android:fontFamily="@font/bungee"
+            android:text="Weight: "
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/Weight_heading"
+            android:layout_below="@+id/Height_heading"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="4dp"
+            android:textColorHint="@color/black"
+            android:hint="Enter weight in kg, Eg: 50"
+            android:textSize="15sp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emi_button"
+            android:text="Calculate BMI"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/bungee"
+            android:textColor="@color/black"
+            android:layout_below="@id/Weight_heading"
+            android:layout_centerInParent="true"
+            android:padding="4dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/BMI_heading_value"
+            android:layout_below="@id/emi_button"
+            android:fontFamily="@font/bungee"
+            android:text="your bmi: "
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/bmi_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/BMI_heading_value"
+            android:layout_below="@+id/emi_button"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="15dp"
+            android:text="30"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/BMI_category"
+            android:layout_below="@id/BMI_heading_value"
+            android:fontFamily="@font/bungee"
+            android:text="Category: "
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/bmi_catergory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/BMI_category"
+            android:layout_below="@+id/BMI_heading_value"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="15dp"
+            android:text="Obesity"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+    </LinearLayout>
+    </ScrollView>
 </FrameLayout>

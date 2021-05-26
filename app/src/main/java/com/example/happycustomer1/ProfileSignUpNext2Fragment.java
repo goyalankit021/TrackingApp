@@ -107,11 +107,14 @@ public class ProfileSignUpNext2Fragment extends Fragment {
 
                 //Getting values of fields
                 String _getUserEnteredPhoneNumber=signup_phone_number.getEditText().getText().toString().trim();
-                String _phoneNo="+"+country_code_picker.getFullNumber()+_getUserEnteredPhoneNumber;
+                //String _getUserEnteredPhoneNumber="8059904727";
+                String _phoneNo="+"+country_code_picker.getSelectedCountryCode()+_getUserEnteredPhoneNumber;
 
+                //String _phoneNo="+"+country_code_picker.getFullNumber();
                 //Making bundle to send data to next fragment
                 bundle.putString("phoneNo",_phoneNo);
                 bundle.putString("whatToDO","createNewUser");
+
 
                 ProfileSignUpOTPFragment fragment2= new ProfileSignUpOTPFragment();
                 fragment2.setArguments(bundle);

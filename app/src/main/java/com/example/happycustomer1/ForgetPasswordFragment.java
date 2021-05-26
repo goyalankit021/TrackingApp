@@ -140,7 +140,7 @@ public class ForgetPasswordFragment extends Fragment {
                 if (_phoneNumber.charAt(0) == '0') {
                     _phoneNumber = _phoneNumber.substring(1);
                 }
-                final String _completePhoneNumber = "+" + forget_country_code_picker.getFullNumber() + _phoneNumber;
+                final String _completePhoneNumber ="+"+forget_country_code_picker.getSelectedCountryCode()+_phoneNumber;
 
                 //Check whether user exits or not
                 Query checkUser= FirebaseDatabase.getInstance().getReference("Users").orderByChild("phoneNo").equalTo(_completePhoneNumber);

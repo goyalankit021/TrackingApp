@@ -100,7 +100,7 @@ public class ProfileSignUpOTPFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view1 = inflater.inflate(R.layout.fragment_profile_sign_up_next2, container, false);
+        View view1 = inflater.inflate(R.layout.fragment_profile_sign_up_o_t_p, container, false);
 
         //Hooks
         pin_view=(PinView)view1.findViewById(R.id.pin_view);
@@ -175,7 +175,7 @@ public class ProfileSignUpOTPFragment extends Fragment {
                 60,                 // Timeout duration
                 TimeUnit.SECONDS,   // Unit of timeout
                 //Next Line Might Show error video link:https://www.youtube.com/watch?v=lk4du-8giyQ
-                (Activity) TaskExecutors.MAIN_THREAD,// Activity (for callback binding)
+                getActivity(),// Activity (for callback binding)
                 mCallbacks);        // OnVerificationStateChangedCallbacks
 
     }

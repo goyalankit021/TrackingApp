@@ -70,7 +70,7 @@ public class FirstAidFragment extends Fragment {
         toolbarTop = (Toolbar) getActivity().findViewById(R.id.toolbar);
 
         mTitle = (TextView)toolbarTop.findViewById(R.id.toolbar_title);
-        mTitle.setText("FIRST AID TECHNIQUES");
+        mTitle.setText("FIRST AID");
         return inflater.inflate(R.layout.fragment_first_aid, container, false);
     }
 }

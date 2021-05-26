@@ -10,9 +10,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     ActionBarDrawerToggle toggle;
     androidx.appcompat.widget.Toolbar toolbar;
     RelativeLayout contentView;
+    boolean IS_LOGIN=false;
 
     static final float END_SCALE=0.7f;
 
@@ -64,19 +68,16 @@ public class MainActivity extends AppCompatActivity {
         MenuItem Login = menu.getItem(2);
         MenuItem Logout = menu.getItem(3);
 
-        FirebaseAuth.getInstance().addAuthStateListener(new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if(user != null){
-                    Logout.setVisible(true);
-                    Login.setVisible(false);
-                }else{
-                    Login.setVisible(true);
-                    Logout.setVisible(false);
-                }
-            }
-        });
+        SharedPreferences sharedPreferences=getSharedPreferences("userLoginSession", Context.MODE_PRIVATE);
+        IS_LOGIN=sharedPreferences.getBoolean("IS_LOGIN",false);
+        if(IS_LOGIN) {
+            Logout.setVisible(true);
+            Login.setVisible(false);
+        }
+        else {
+            Login.setVisible(true);
+            Logout.setVisible(false);
+        }
 
         toolbar=(androidx.appcompat.widget.Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -96,13 +97,11 @@ public class MainActivity extends AppCompatActivity {
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             Fragment temp;
-            boolean home=false;
             @Override
             public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.home:
                         temp=new HomeFragment();
-                        home=true;
                         break;
 
                     case R.id.First_Aid_Techniques:
@@ -118,7 +117,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.Profile:
-                        temp=new ProfileFragment();
+                        if(IS_LOGIN){
+                        temp=new UserProfileAfterLoginFragment();}
+                        else
+                        {
+                            temp=new ProfileLoginFragment();
+                        }
                         break;
 
                     case R.id.Biceps_and_Back:
@@ -154,12 +158,18 @@ public class MainActivity extends AppCompatActivity {
                         temp=new HomeLegsFragment();
                         break;
 
+                    case R.id.Login:
+                        temp=new ProfileLoginFragment();
+                        break;
+
+                    case R.id.Logout:
+                        FirebaseAuth.getInstance().signOut();
+                        temp=new HomeFragment();
+                        break;
+
                         //Yet to add login and logout
                 }
-                if(!home)
-                    getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,temp).commit();
-                else
-                    getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,temp).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.wrapper,temp).commit();
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return true;
             }
