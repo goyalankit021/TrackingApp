@@ -46,15 +46,8 @@ import org.jetbrains.annotations.NotNull;
 
 import static android.content.ContentValues.TAG;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileLoginFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ProfileLoginFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -286,10 +279,8 @@ public class ProfileLoginFragment extends Fragment {
                 if (!isConnected(getContext())) {
                     showCustomDialog(view);
                 }
-
                 if (!validateOnlyEmail()) {
-                    return;
-                }
+                    return;}
 
 
                 String _email = login_email.getEditText().getText().toString().trim();
@@ -351,29 +342,6 @@ public class ProfileLoginFragment extends Fragment {
             return false;
         }
     }
-/*
-    private boolean validateFields() {
-        String _phoneNumber = login_phone_number.getEditText().getText().toString().trim();
-        String _password = login_password.getEditText().getText().toString().trim();
-
-        if (_phoneNumber.isEmpty()) {
-            login_phone_number.setError("Phone number can not be empty");
-            login_phone_number.requestFocus();
-            return false;
-        } else if (_password.isEmpty()) {
-            login_password.setError("Password can not be empty");
-            login_password.requestFocus();
-            return false;
-        } else {
-            login_phone_number.setError(null);
-            login_phone_number.setErrorEnabled(false);
-
-            login_password.setError(null);
-            login_password.setErrorEnabled(false);
-            return true;
-        }
-    }
-*/
 
     public boolean validateEmail() {
         String _email = login_email.getEditText().getText().toString().trim();
@@ -401,6 +369,4 @@ public class ProfileLoginFragment extends Fragment {
             return true;
         }
     }
-
-
 }

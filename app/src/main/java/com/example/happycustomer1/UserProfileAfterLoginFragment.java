@@ -5,9 +5,11 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +18,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 
@@ -109,6 +120,24 @@ public class UserProfileAfterLoginFragment extends Fragment {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userLoginSession", Context.MODE_PRIVATE);
         String fullNameSH = sharedPreferences.getString("fullName","Unknown");
         String genderSH = sharedPreferences.getString("gender","Unknown");
+        CollectionReference collection = FirebaseFirestore.getInstance().collection("users");
+        String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        collection.document(email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    username.setText(document.get("full_name",String.class));
+                    gender.setText(document.get("gender",String.class));
+
+                } else {
+                    Log.d("FireBAse user not found", "get failed with ", task.getException());
+                }
+            }
+        });
+
+
+
         username.setText(fullNameSH);
         gender.setText(genderSH);
 
